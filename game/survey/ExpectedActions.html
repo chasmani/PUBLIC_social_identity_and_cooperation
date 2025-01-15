@@ -1,0 +1,73 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+{% load static %}
+
+{{ block title }}
+<div>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+  Survey
+</div>
+</div>
+</div>
+{{ endblock }}
+{{ block content }}
+
+  <div>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-2">
+
+      <p>You will begin the game shortly. Each round, you will be given a coin and asked to choose one of four options:</p>
+
+      <ol>
+        <li>Invest in <span class="big-group">Allshire</span>.</li>
+        <li>Invest in <span class="my-small-group">Westville</span>.</li>
+        <li>Invest in <span class="other-small-group">Eastburgh</span>.</li>
+        <li>Keep the coin.</li>
+      </ol> 
+
+      <p>Imagine we played this game with 100 people. How many people do you think would choose each option <strong>in round 1?</strong>. 
+
+        <p>NOTE: These 100 people all play the game as members of <span class="my-small-group">Westville</span> and <span class="big-group">Allshire</span> (not <span class="other-small-group">Eastburgh</span> players).</p>
+
+    </div>
+  
+
+  <div class="col-md-4">
+        <img class="instruction-img" src="{{ static 'resources/diagram_b.png' }}"/>
+    </div>
+
+  </div>
+
+      <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+
+
+      {{ formfields }}
+
+
+      </div>
+  </div>
+
+
+
+
+
+
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-md-8 col-md-offset-2">
+      {{ next_button }}
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+{{ endblock }}

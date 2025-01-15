@@ -1,0 +1,87 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+{% load static %}
+
+{{ block title }}
+<div>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+  Survey
+</div>
+</div>
+</div>
+{{ endblock }}
+{{ block content }}
+
+  <div>
+ 
+  
+<div class="row mt-4">
+    <div class="col-md-8">
+    	<p>The diagram below is designed to represent your relationship with <span class="big-group">Allshire</span>. Please indicate your relationship by clicking and dragging the smaller "Me" circle to the position that best captures your relationship with <span class="big-group">Allshire</span>.
+
+    	<div class="DIFI-big-group-container" onclick="loadShadow()">
+	    	<input name="DIFI_big_group" id="DIFI_big_group"/>
+
+	    </div>
+
+	    <hr>
+
+    	<p>The diagram below is designed to represent your relationship with <span class="my-small-group">Westville</span>. Please indicate your relationship by clicking and dragging the smaller "Me" circle to the position that best captures your relationship with <span class="my-small-group">Westville</span>.
+
+<div class="DIFI-small-group-container">
+	    	<input name="DIFI_my_group" id="DIFI_my_group" />
+	    </div>
+
+      <hr>
+
+      <p>The diagram below is designed to represent your relationship with <span class="other-small-group">Eastburgh</span>. Please indicate your relationship by clicking and dragging the smaller "Me" circle to the position that best captures your relationship with <span class="other-small-group">Eastburgh</span>.
+
+<div class="DIFI-other-group-container">
+        <input name="DIFI_other_group" id="DIFI_other_group" />
+      </div>
+
+   </div></div>
+   <div class="row mt-4">
+    <div class="col-md-8">
+      <p><strong>You need to interact with each of the group questions in order to advance (i.e. use your mouse to move each of the "Me" circles at least a little bit).</strong></p>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-md-8">
+      {{ next_button }}
+    </div>
+  </div>
+</div>
+
+   <script>
+   var el = document.getElementById('DIFI_big_group');
+   new identityfusion.DIFIInput(el, {groupLabel: 'Allshire'});
+   var el2 = document.getElementById('DIFI_my_group');
+   new identityfusion.DIFIInput(el2, {groupLabel: 'Westville'});
+   var el3 = document.getElementById('DIFI_other_group');
+   new identityfusion.DIFIInput(el3, {groupLabel: 'Eastburgh'});
+
+
+    var bigGroupEl = document.getElementsByClassName('DIFI-big-group-container')[0];
+    var bigGroupMe = (bigGroupEl.getElementsByClassName('DIFI-me')[0]);
+    bigGroupMe.style.left = '37%';
+
+
+  var myGroupEl = document.getElementsByClassName('DIFI-small-group-container')[0];
+    var myGroupMe = (myGroupEl.getElementsByClassName('DIFI-me')[0]);
+    myGroupMe.style.left = '37%';    
+
+    var otherGroupEl = document.getElementsByClassName('DIFI-other-group-container')[0];
+    var otherGroupMe = (otherGroupEl.getElementsByClassName('DIFI-me')[0]);
+    otherGroupMe.style.left = '37%';  
+
+    document.getElementsByClassName("otree-btn-next")[0].style.display = "none";
+
+
+  </script>
+
+
+
+{{ endblock }}

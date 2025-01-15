@@ -1,0 +1,138 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+{% load static %}
+
+{{ block title }}
+  <div>
+  
+    <div class="row">
+
+    	<div class="col-md-8 offset-md-2">
+    Instructions
+      </div>
+    </div>
+</div>
+{{ endblock }}
+{{ block content }}
+
+<div>
+  
+  <div class="row">
+
+    <div class="col-md-6 offset-md-3">
+        <img class="instruction-img" src="{{ static 'resources/diagram_b.png' }}"/>
+    You are in <span class="my-small-group">Westville</span>, a part of <span class="big-group">Allshire</span>. 
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+
+
+
+    	<h3>Choices</h3>
+			Each round, you are given a coin and can choose to either:
+				<ol>
+					<li>Invest in <span class="big-group">Allshire</span>.</li>
+					<li>Invest in <span class="my-small-group">Westville</span>.</li>
+          <li>Invest in <span class="other-small-group">Eastburgh</span></li>
+					<li>Keep the coin.</li>
+				</ol>
+
+The other players have the same decision.
+
+	</div>
+</div>
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+
+
+
+<h3>Payoffs</h3>
+Each round, bonus payments are earned depending on how people invest:
+	<ol>
+		<li>If at least 4 players choose to invest in <span class="big-group">Allshire</span>, then all 6 players get + {{ gameConstants.GLOBAL_REWARD }} coins. </li>
+		<li>If at least 2 players choose to invest in <span class="my-small-group">Westville</span>, then all 3 <span class="my-small-group">Westville</span> players get + {{ gameConstants.LOCAL_REWARD }} coins.</li>
+    <li>If at least 2 players choose to invest in <span class="other-small-group">Eastburgh</span>, then all 3 <span class="other-small-group">Eastburgh</span> players get + {{ gameConstants.LOCAL_REWARD }} coins. (You are NOT in <span class="other-small-group">Eastburgh</span> and will NOT receive any coins from this bonus).</li>
+		<li>If you choose to keep your coin, then you get + 1 coins.</li>
+	</ol>
+
+  <p><strong>1 coin = £ {{ gameConstants.PAYOUT_PER_COIN }}</strong>. The in-game coins will be converted to real money at the end of the game.</p> 
+  
+
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-8 offset-md-2">
+
+	<h3>Payoffs Summary:</h3>
+
+	<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Group</th>
+      <th scope="col">Target Investment</th>
+      <th scope="col">Bonus</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="big-group">
+      <td>Allshire</td>
+      <td>At least 4 players</td>
+      <td>+ {{ gameConstants.GLOBAL_REWARD }} coins for ALL players
+</td>
+    </tr>
+    <tr class="my-small-group">
+      <td>Westville</td>
+      <td>At least 2 players</td>
+      <td>+ {{ gameConstants.LOCAL_REWARD }} coins for ALL Westville players</td>
+    </tr>
+    <tr class="other-small-group">
+      <td>Eastburgh</td>
+      <td>At least 2 players</td>
+      <td>+ {{ gameConstants.LOCAL_REWARD }} coins for ALL Eastburgh players</td>
+    </tr>
+    <tr>
+      <td>Yourself</td>
+      <td>You choose "Keep the coin"</td>
+      <td>+ 1 coin for YOU</td>
+    </tr>
+  </tbody>
+</table>
+
+  <ul>
+    <li>Multiple bonuses can be paid out each round.</li>
+      <li>You can earn bonuses even if you didn't invest.</li>
+  </ul>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+
+    	<h3>Quiz</h3>
+
+    {{ formfields }}
+
+    </div>
+  </div>
+  
+
+
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      {{ next_button }}
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+{{ endblock }}

@@ -1,0 +1,106 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+{% load static %}
+
+{{ block title }}
+
+
+  <div class="row">
+    <div class="col">
+  Strategy</span>
+</div>
+</div>
+{{ endblock }}
+{{ block content }}
+
+  <div class="row">
+    <div class="col">
+
+      <p>We would like to know what kind of strategy you were playing.</p>
+
+      <p>For each statement, please say how much it describes the strategy you were playing during the game</p>
+
+
+<table class="table">
+  <tr>
+    <th></th>
+    <th>Completely Disagree</th>
+    <th>Slightly Disagree</th>
+    <th>Neither Agree Not Disagree</th>
+    <th>Slightly Agree</th>
+    <th>Completely Agree</th>
+  </tr>
+
+        <tr>
+            <th>{{ form.survey_strategy_1.label }}</th>
+            {{ for choice in form.survey_strategy_1 }}
+                <td>{{ choice }}</td>
+            {{ endfor }}
+        </tr>
+
+        <tr>
+            <th>{{ form.survey_strategy_2.label }}</th>
+            {{ for choice in form.survey_strategy_2 }}
+                <td>{{ choice }}</td>
+            {{ endfor }}
+        </tr>
+        <tr>
+            <th>{{ form.survey_strategy_3.label }}</th>
+            {{ for choice in form.survey_strategy_3 }}
+                <td>{{ choice }}</td>
+            {{ endfor }}
+        </tr>
+        <tr>
+            <th>{{ form.survey_strategy_4.label }}</th>
+            {{ for choice in form.survey_strategy_4 }}
+                <td>{{ choice }}</td>
+            {{ endfor }}
+        </tr>
+        <tr>
+            <th>{{ form.survey_strategy_5.label }}</th>
+            {{ for choice in form.survey_strategy_5 }}
+                <td>{{ choice }}</td>
+            {{ endfor }}
+        </tr>
+        <tr>
+            <th>{{ form.survey_strategy_6.label }}</th>
+            {{ for choice in form.survey_strategy_6 }}
+                <td>{{ choice }}</td>
+            {{ endfor }}
+        </tr>
+        <tr>
+            <th>{{ form.survey_strategy_7.label }}</th>
+            {{ for choice in form.survey_strategy_7 }}
+                <td>{{ choice }}</td>
+            {{ endfor }}
+        </tr>
+    </table>
+
+    </div>
+  </div>
+<hr>
+  <div class="row">
+    <div class="col-md-6">
+
+      {{ formfield "survey_strategy_free_text" }}
+</div>
+</div>
+
+
+
+  <div class="row">
+    <div class="col">
+      {{ next_button }}
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+  
+
+
+{{ endblock }}
