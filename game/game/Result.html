@@ -1,0 +1,195 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{{ block title }}
+
+  <div>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+
+    Result
+  </div>
+</div>
+</div>
+{{ endblock }}
+{{ block content }}
+
+
+<div>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+
+      <p>
+      {% if player.contribution == "global" %}
+        You chose to invest in <span class="big-group">Allshire</span>.
+      {% elif player.contribution == "local" %}
+       You chose to invest in <span class="my-small-group">Westville</span>.
+       {% elif player.contribution == "other" %}
+       You chose to invest in <span class="other-small-group">Eastburgh</span>.
+      {% elif player.contribution == "self" %}
+        You chose to keep the coin
+      {% endif %}
+    </p>
+
+      In total:
+      <ul>
+        <li>
+          <span class="big-group">Allshire</span>: {{ player.global_group_contributions }} players invested. 
+        </li>
+        <li>
+          <span class="my-small-group">Westville</span>: {{ player.local_group_contributions }} players invested. 
+        </li>
+        <li>
+          <span class="other-small-group">Eastburgh</span>: {{ player.other_group_contributions }} players invested. 
+        </li>
+        <li>
+           <strong>Kept the coin</strong>: {{ player.kept_group_contributions }} players.
+        </li>
+        
+      </ul>
+
+      <h2>Your Payoff Summary:</h2>
+
+      <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Group</th>
+      <th scope="col">Target</th>
+      <th scope="col">Bonus</th>
+      <th scope="col">Investment</th>
+      <th scope="col">Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="big-group">
+      <td>Allshire</td>
+      <td>At least 4 players</td>
+      <td>+ {{ global_reward }} coins for ALL players</td>
+      
+      <td>
+
+        {% for class in global_results_classes %}
+          {% if class == "full" %}
+             <span class="dot bg-big-group"></span>
+          {% elif class == "empty" %}
+              <span class="dot bg-empty"></span>
+          {% elif class == "threshold" %}
+            <span class="target-line bg-big-group"></span>
+          {% endif %}
+        {% endfor %}
+
+        </td>
+        <td>
+          {% if player.global_threshold_met %}
+            <i class="glyphicon glyphicon-ok"></i>+ {{ global_reward }} coins
+          {% else %}
+            <i class="glyphicon glyphicon-remove"></i>+ 0 coins
+          {% endif %}
+        </td>
+      
+  
+    </tr>
+    <tr class="my-small-group">
+      <td>Westville</td>
+      <td>At least 2 players</td>
+      <td>+ {{ local_reward }} coins for ALL Westville players</td>
+      <td>
+
+        {% for class in local_results_classes %}
+          {% if class == "full" %}
+             <span class="dot bg-my-small-group"></span>
+          {% elif class == "empty" %}
+              <span class="dot bg-empty"></span>
+          {% elif class == "threshold" %}
+            <span class="target-line bg-my-small-group"></span>
+          {% endif %}
+        {% endfor %}
+      </td>
+
+      <td>
+
+          {% if player.local_threshold_met %}
+            <i class="glyphicon glyphicon-ok"></i>+ {{ local_reward }} coins (Westville)
+          {% else %}
+            <i class="glyphicon glyphicon-remove"></i>+ 0 coins
+          {% endif %}
+      </td>
+    </tr>
+
+    <tr class="other-small-group">
+      <td>Eastburgh</td>
+      <td>At least 2 players</td>
+      <td>+ {{ local_reward }} coins for ALL Eastburgh players</td>
+      <td>
+
+        {% for class in other_results_classes %}
+          {% if class == "full" %}
+             <span class="dot bg-other-small-group"></span>
+          {% elif class == "empty" %}
+              <span class="dot bg-empty"></span>
+          {% elif class == "threshold" %}
+            <span class="target-line bg-other-small-group"></span>
+          {% endif %}
+        {% endfor %}
+      </td>
+
+      <td>
+
+          {% if player.other_threshold_met %}
+            <i class="glyphicon glyphicon-ok"></i>+ 0 coins for YOU (Eastburgh only)
+          {% else %}
+            <i class="glyphicon glyphicon-remove"></i>+ 0 coins
+          {% endif %}
+      </td>
+    </tr>
+
+    <tr>
+      <td>Yourself</td>
+      <td>You choose "Keep the coin"</td>
+      <td>+ 1 coin for YOU</td>
+      <td>
+        {% if player.contribution == "self" %}
+          <span class="dot bg-keep-it"></span>
+        {% else %}
+          <span class="dot bg-empty"></span>
+        {% endif %}
+        
+
+      </td>
+      <td>
+        {% if player.contribution == "self" %}
+          <i class="glyphicon glyphicon-ok"></i>+ 1 coin
+        {% else %}
+          <i class="glyphicon glyphicon-remove"></i>+ 0 coins</td>
+        {% endif %}
+      </td>
+    </tr>
+
+    <tr class="table-active">
+      <td><strong>Your Total</strong></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><strong>{{ player.total_payoff_this_round }} coins<strong></td>
+    </tr>
+  </tbody>
+</table>
+
+      <p>This round you earned {{ player.total_payoff_this_round }} coins.</p>
+
+      <p>You have a total of {{ player.participant.total_payoff }} coins.</p>
+
+
+    {{ next_button }}
+
+
+
+    </div>
+    
+  </div>
+</div>
+
+
+
+
+{{ endblock }}

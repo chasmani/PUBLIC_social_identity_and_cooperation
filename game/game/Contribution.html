@@ -1,0 +1,290 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{{ block title }}
+  Contribution
+{{ endblock }}
+
+{{ block content }}
+
+
+
+<div>
+  <div class="row">
+    <div class="col-md-6">
+
+    <p>
+   		This is round <b>{{ player.round_number }}</b>.
+	</p>
+    <p>
+       You are in <span class="my-small-group">Westville</span>, a part of <span class="big-group">Allshire</span>. 
+    </p>
+
+	 {{ formfields }}
+
+    {{ next_button }}
+
+    </div>
+    <div class="col-md-4">
+        <img class="instruction-img" src="{{ static 'resources/diagram_b.png' }}"/>
+    </div>
+  </div>
+
+<hr>
+
+
+  {% if player.round_number > 1 %}
+
+        <div class="row">
+          <h3>Round History - Group Totals</h3>
+
+          <p>Dotted lines are the group bonus thresholds.</p>
+          <div class="col-md-3">
+
+            <h4><span class="big-group">Allshire</span></h4>
+            <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+            </script>
+
+            <canvas id="globalChart" style="width:100%;max-width:700px;height:200px"></canvas>
+
+            <script>
+            var xValues = {{ round_nums }};
+
+            new Chart("globalChart", {
+              type: "line",
+              data: {
+                labels: xValues,
+                datasets: [{
+                  data: {{ global_history }},
+                  borderColor: "#8e44ad",
+                  fill: false
+                },{
+                  data: {{ global_thresholds }},
+                  pointRadius: 0,
+                  borderColor: "#8e44ad",
+                  borderDash: [10,10],
+                  fill: false
+                }]
+              },
+              options: {
+                legend: {display: false},
+                tooltips: {
+                     enabled: false
+                },
+                scales: {
+                    yAxes: [{
+                              scaleLabel: {
+                              display: true,
+                              labelString: 'contributors'
+                            },
+                            display: true,
+                            ticks: {
+                                beginAtZero: true,
+                                steps: 6,
+                                stepValue: 1,
+                                max: 6
+                            }
+                        }],
+                        xAxes: [{
+                              scaleLabel: {
+                              display: true,
+                              labelString: 'round'
+                            },
+                            display: true,
+                            
+                        }]
+                },
+              }
+            });
+            </script>
+
+          </div>
+
+          <div class="col-md-3">
+
+            <h4><span class="my-small-group">Westville</span></h4>
+            
+            <canvas id="localChart" style="width:100%;max-width:700px;height:200px"></canvas>
+
+            <script>
+            var xValues = {{ round_nums }};
+
+            new Chart("localChart", {
+              type: "line",
+              data: {
+                labels: xValues,
+                datasets: [{
+                  data: {{ local_history }},
+                  borderColor: "#e67e22",
+                  fill: false
+                },{
+                  data: {{ local_thresholds }},
+                  pointRadius: 0,
+                  borderColor: "#e67e22",
+                  borderDash: [10,10],
+                  fill: false
+                }]
+              },
+              options: {
+                legend: {display: false},
+                tooltips: {
+                     enabled: false
+                },
+                scales: {
+                    yAxes: [{
+                              scaleLabel: {
+                              display: true,
+                              labelString: 'contributors'
+                            },
+                            display: true,
+                            ticks: {
+                                beginAtZero: true,
+                                steps: 6,
+                                stepValue: 1,
+                                max: 6
+                            }
+                        }],
+                        xAxes: [{
+                              scaleLabel: {
+                              display: true,
+                              labelString: 'round'
+                            },
+                            display: true,
+                            
+                        }]
+                },
+              }
+            });
+            </script>
+
+          </div>
+
+          <div class="col-md-3">
+
+            <h4><span class="other-small-group">Eastburgh</span></h4>
+           
+
+            <canvas id="otherChart" style="width:100%;max-width:700px;height:200px"></canvas>
+
+            <script>
+            var xValues = {{ round_nums }};
+
+            new Chart("otherChart", {
+              type: "line",
+              data: {
+                labels: xValues,
+                datasets: [{
+                  data: {{ other_history }},
+                  borderColor: "#01c8ee",
+                  fill: false
+                },{
+                  data: {{ local_thresholds }},
+                  borderColor: "#01c8ee",
+                  pointRadius: 0,
+                  borderDash: [10,10],
+                  fill: false
+                }]
+              },
+              options: {
+                legend: {display: false},
+                tooltips: {
+                     enabled: false
+                },
+                scales: {
+                    yAxes: [{
+                              scaleLabel: {
+                              display: true,
+                              labelString: 'contributors'
+                            },
+                            display: true,
+                            ticks: {
+                                beginAtZero: true,
+                                steps: 6,
+                                stepValue: 1,
+                                max: 6
+                            }
+                        }],
+                        xAxes: [{
+                              scaleLabel: {
+                              display: true,
+                              labelString: 'round'
+                            },
+                            display: true,
+                            
+                        }]
+                },
+              }
+            });
+            </script>
+
+          </div>
+
+          <div class="col-md-3">
+
+
+            <h4><strong>Kept the coin</strong></h4>
+           
+            <canvas id="keptChart" style="width:100%;max-width:700px;height:200px"></canvas>
+
+            <script>
+            var xValues = {{ round_nums }};
+
+            new Chart("keptChart", {
+              type: "line",
+              data: {
+                labels: xValues,
+                datasets: [{
+                  data: {{ kept_history }},
+                  borderColor: "#aaaaaa",
+                  fill: false
+                }]
+              },
+              options: {
+                legend: {display: false},
+                tooltips: {
+                     enabled: false
+                },
+                scales: {
+                    yAxes: [{
+                              scaleLabel: {
+                              display: true,
+                              labelString: 'contributors'
+                            },
+                            display: true,
+                            ticks: {
+                                beginAtZero: true,
+                                steps: 6,
+                                stepValue: 1,
+                                max: 6
+                            }
+                        }],
+                        xAxes: [{
+                              scaleLabel: {
+                              display: true,
+                              labelString: 'round'
+                            },
+                            display: true,
+                            
+                        }]
+                },
+              }
+            });
+            </script>
+
+          </div>
+
+
+
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+
+
+   
+
+{{ endblock }}

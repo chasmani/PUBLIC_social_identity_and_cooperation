@@ -1,0 +1,47 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{{ block title }}
+  Important
+{{ endblock }}
+
+{{ block content }}
+
+
+
+<div>
+  <div class="row">
+    <div class="col-md-6">
+
+      <h3><span class="big-group">Allshire Bonus = {{ C.GLOBAL_REWARD }} Coins</span></h3>
+      <p>The bonus for meeting the <span class="big-group">Allshire</span> threshold has now returned to <strong>{{ C.GLOBAL_REWARD }} coins</strong> for every player.</p>
+
+      <p>The bonus for meeting the <span class="my-small-group">Westville</span> threshold is the same as before, at 2 coins for players in <span class="my-small-group">Westville</span>. </p>
+
+      </div>
+    </div>
+
+
+  <div class="row">
+    <div class="col-md-6">
+
+    {{ formfields }}
+
+    </div>
+  </div>
+  
+
+
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      {{ next_button }}
+    </div>
+  </div>
+  </div>
+
+
+
+
+   
+
+{{ endblock }}

@@ -1,0 +1,71 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+{% load static %}
+
+{{ block title }}
+  <div>
+  
+    <div class="row">
+
+
+    <div class="col-md-6 offset-md-3">
+  
+    Instructions
+  </div></div></div>
+{{ endblock }}
+{{ block content }}
+
+  <div>
+  
+    <div class="row">
+
+
+    <div class="col-md-6 offset-md-3">
+
+      <p>
+        Welcome to the experiment and thank you for joining. The next few pages will give you instructions on how to play.  
+      </p>
+      <p>
+
+      <ul>
+        <li>You will play in a group of 6 players.</li>
+        <li>Each round, all 6 players are asked to make a decision.</li>
+        <li>You will play up to 25 rounds with the same players.</li>
+        <li>Each round, you can earn a bonus payment.</li>
+        <li>Your bonus payments depend on the decisions of the players in your group.</li>
+      </ul>
+      </p>
+
+      <p>During the game you will occasionally have to wait for other members of your group.</p>
+
+      <p><strong>You must stay active in the game.</strong> When it comes to a decision, you will have 30 seconds. If you miss decisions in 3 rounds then you will lose your bonus payments.</p> 
+
+
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+
+    {{ formfields }}
+
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      {{ next_button }}
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+{{ endblock }}

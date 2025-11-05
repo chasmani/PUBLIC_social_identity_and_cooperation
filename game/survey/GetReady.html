@@ -1,0 +1,43 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+{% load static %}
+
+{{ block title }}
+<div>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+  Get Ready
+</div>
+</div>
+</div>
+{{ endblock }}
+{{ block content }}
+
+  <div>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+
+      <p>Thank you for your patience. On the next page we will begin the game.</p>
+
+      <p>You may have to wait a few minutes while we group you up with other players. Please stay active on the browser tab. Once you are grouped up you will immediately go to your first decision.</p>
+
+      <p>Click Next when you are ready.</p>
+
+
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-md-8 col-md-offset-2">
+      {{ next_button }}
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+{{ endblock }}

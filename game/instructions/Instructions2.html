@@ -1,0 +1,68 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+{% load static %}
+
+{{ block title }}
+  <div>
+  
+    <div class="row">
+
+
+    <div class="col-md-6 offset-md-3">
+    Instructions
+      </div>
+    </div>
+</div>
+{{ endblock }}
+{{ block content }}
+
+<div >
+  
+
+
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+
+        The 6 players in your group are organised into two towns (<span class="my-small-group">Westville</span> and <span class="other-small-group">Eastburgh</span>), both of which are part of a larger area called <span class="big-group">Allshire</span>. In summary:
+        <ul>
+          <li>All 6 players live in an area called <span class="big-group">Allshire.</span></li>
+          <li>3 players are in <span class="my-small-group">Westville</span> and 3 are in <span class="other-small-group">Eastburgh.</span></li>
+          <li>You live in <span class="my-small-group">Westville</span>, a part of <span class="big-group">Allshire.</span></li>
+        </ul>
+    </div>
+  </div>
+
+    <div class="row">
+
+    <div class="col-md-6 offset-md-3">
+        <img class="instruction-img" src="{{ static 'resources/diagram_b.png' }}"/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+
+        <h3>Quiz</h3>
+
+    {{ formfields }}
+
+    </div>
+  </div>
+  
+
+
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      {{ next_button }}
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+{{ endblock }}

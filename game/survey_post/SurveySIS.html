@@ -1,0 +1,236 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+{% load static %}
+
+{{ block title }}
+
+
+  <div class="row">
+    <div class="col">
+  Survey</span>
+</div>
+</div>
+{{ endblock }}
+{{ block content }}
+
+  <div class="row">
+    <div class="col">
+
+      <p>Thank you! That is the end of the main part of the game. We will now ask you some questions about:
+        <ol>
+          <li>Players from <span class="big-group">Allshire</span> (could be from Westville or Eastburgh).</li>
+          <li>Players from <span class="my-small-group">Westville</span>.
+            <li>Players from <span class="other-small-group">Eastburgh</span>.
+        </ol>
+      </p>
+    </div>
+  </div>
+  
+    <hr>
+
+  <div class="row">
+    <div class="col-md-6">
+
+      <h2>1. Questions about <span class="big-group">Allshire</span></h2>
+
+      <p>
+
+      <p>Instructions: For each item, please think of the situation in the game and indicate how strongly you agree or disagree with how the statement describes that situation. In each item “the other” refers to the person(s) in the situation, <strong>in this case a person who is from <span class="big-group">Allshire</span> (could be from Westville of Eastburgh).</strong></p>
+      
+    </div>
+
+      <div class="col-md-4">
+        <img class="instruction-img" src="{{ static 'resources/diagram_highlight_allshire.png' }}"/>
+    </div>
+
+  </div>
+  <div class="row">
+
+    <div class="col">
+
+
+
+<table class="table">
+  <tr>
+    <th></th>
+    <th>Completely Disagree</th>
+    <th>Slightly Disagree</th>
+    <th>Neither Agree Not Disagree</th>
+    <th>Slightly Agree</th>
+    <th>Completely Agree</th>
+  </tr>
+
+        <tr>
+            <th>{{ form.survey_global_sis_1.label }}</th>
+            {{ for choice in form.survey_global_sis_1 }}
+                <td>{{ choice }}</td>
+            {{ endfor }}
+        </tr>
+
+        <tr>
+            <th>{{ form.survey_global_sis_2.label }}</th>
+            {{ for choice in form.survey_global_sis_2 }}
+                <td>{{ choice }}</td>
+            {{ endfor }}
+        </tr>
+
+        <tr>
+            <th>{{ form.survey_global_sis_3.label }}</th>
+            {{ for choice in form.survey_global_sis_3 }}
+                <td>{{ choice }}</td>
+            {{ endfor }}
+        </tr>
+
+        <tr>
+            <th>{{ form.survey_global_sis_4.label }}</th>
+            {{ for choice in form.survey_global_sis_4 }}
+                <td>{{ choice }}</td>
+            {{ endfor }}
+        </tr>
+
+</table>
+
+    </div>
+  </div>
+<hr>
+  <div class="row">
+    <div class="col-md-6">
+
+      <h2>2. Questions about <span class="my-small-group">Westville</span></h2>
+
+      <p>Instructions: For each item, please think of the situation in the game and indicate how strongly you agree or disagree with how the statement describes that situation. In each item “the other” refers to the person(s) in the situation, <strong>in this case a person who is from <span class="my-small-group">Westville</span>.</strong></p>
+    </div>
+
+      <div class="col-md-4">
+        <img class="instruction-img" src="{{ static 'resources/diagram_highlight_westville.png' }}"/>
+    </div>
+  </div>
+  <div class="row">
+
+
+    <div class="col">
+<table class="table">
+  <tr>
+    <th></th>
+    <th>Completely Disagree</th>
+    <th>Slightly Disagree</th>
+    <th>Neither Agree Not Disagree</th>
+    <th>Slightly Agree</th>
+    <th>Completely Agree</th>
+  </tr>
+
+        <tr>
+            <th>{{ form.survey_local_sis_1.label }}</th>
+            {{ for choice in form.survey_local_sis_1 }}
+                <td>{{ choice }}</td>
+            {{ endfor }}
+        </tr>
+
+        <tr>
+            <th>{{ form.survey_local_sis_2.label }}</th>
+            {{ for choice in form.survey_local_sis_2 }}
+                <td>{{ choice }}</td>
+            {{ endfor }}
+        </tr>
+
+        <tr>
+            <th>{{ form.survey_local_sis_3.label }}</th>
+            {{ for choice in form.survey_local_sis_3 }}
+                <td>{{ choice }}</td>
+            {{ endfor }}
+        </tr>
+
+        <tr>
+            <th>{{ form.survey_local_sis_4.label }}</th>
+            {{ for choice in form.survey_local_sis_4 }}
+                <td>{{ choice }}</td>
+            {{ endfor }}
+        </tr>
+</table>
+
+    </div>
+  </div>
+
+<hr>
+  <div class="row">
+    <div class="col-md-6">
+
+      <h2>3. Questions about <span class="other-small-group">Eastburgh</span></h2>
+
+      <p>Instructions: For each item, please think of the situation in the game and indicate how strongly you agree or disagree with how the statement describes that situation. In each item “the other” refers to the person(s) in the situation, <strong>in this case a person who is from <span class="other-small-group">Eastburgh</span>.</strong></p>
+    </div>
+
+      <div class="col-md-4">
+        <img class="instruction-img" src="{{ static 'resources/diagram_highlight_eastburgh.png' }}"/>
+    </div>
+  </div>
+  <div class="row">
+
+
+    <div class="col">
+<table class="table">
+  <tr>
+    <th></th>
+    <th>Completely Disagree</th>
+    <th>Slightly Disagree</th>
+    <th>Neither Agree Not Disagree</th>
+    <th>Slightly Agree</th>
+    <th>Completely Agree</th>
+  </tr>
+
+        <tr>
+            <th>{{ form.survey_other_sis_1.label }}</th>
+            {{ for choice in form.survey_other_sis_1 }}
+                <td>{{ choice }}</td>
+            {{ endfor }}
+        </tr>
+
+        <tr>
+            <th>{{ form.survey_other_sis_2.label }}</th>
+            {{ for choice in form.survey_other_sis_2 }}
+                <td>{{ choice }}</td>
+            {{ endfor }}
+        </tr>
+
+        <tr>
+            <th>{{ form.survey_other_sis_3.label }}</th>
+            {{ for choice in form.survey_other_sis_3 }}
+                <td>{{ choice }}</td>
+            {{ endfor }}
+        </tr>
+
+        <tr>
+            <th>{{ form.survey_other_sis_4.label }}</th>
+            {{ for choice in form.survey_other_sis_4 }}
+                <td>{{ choice }}</td>
+            {{ endfor }}
+        </tr>
+
+        <tr>
+            <th>{{ form.attention_check_1.label }}</th>
+            {{ for choice in form.attention_check_1 }}
+                <td>{{ choice }}</td>
+            {{ endfor }}
+        </tr>
+</table>
+
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col">
+      {{ next_button }}
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+  
+
+
+{{ endblock }}
